@@ -358,6 +358,10 @@
       const endpoint = 'https://formsubmit.co/ajax/bhavish777bn@gmail.com';
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
+        if (!['http:', 'https:'].includes(window.location.protocol)) {
+          status.textContent = 'Open this portfolio through a website URL or a local web server before sending.';
+          return;
+        }
         if (!form.reportValidity()) return;
         const fields = new FormData(form);
         const payload = {
@@ -366,7 +370,8 @@
           _replyto: String(fields.get('email') || '').trim(),
           _subject: `Portfolio message: ${String(fields.get('subject') || '').trim()}`,
           message: String(fields.get('message') || '').trim(),
-          _honey: String(fields.get('_honey') || '')
+          _honey: String(fields.get('_honey') || ''),
+          _url: window.location.href
         };
         button.disabled = true;
         status.textContent = 'Sending your message…';
@@ -382,7 +387,7 @@
           const providerMessage = String(result.message || '').toLowerCase();
           status.textContent = /confirm|activat/.test(providerMessage)
             ? 'Check your inbox for FormSubmit’s activation email. Messages will be delivered after you confirm the form.'
-            : 'Request accepted. If this is the first message, confirm FormSubmit’s activation email in your inbox to start delivery.';
+            : 'FormSubmit accepted the request. Check your inbox and spam folder for the message.';
         } catch (error) {
           status.textContent = error.message || 'Your message could not be sent. Please try again.';
         } finally {
