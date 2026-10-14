@@ -1,21 +1,11 @@
-# Bhavish B N — Portfolio
+# Bhavish B N
 
-A personal portfolio for exploring my projects, learning journey, and ways to get in touch.
+A personal site to explore my projects, learning journey, and ways to get in touch.
 
-## Run locally
+## Visit
 
-This is a static site. From the project folder, start a local web server:
+[bhavishbn.netlify.app](https://bhavishbn.netlify.app/)
 
-```bash
-python -m http.server 8000
-```
+## Contact
 
-Then open <http://localhost:8000>.
-
-## Deploy
-
-Deploy the project folder to Netlify. Keep `index.html` and `contact.js` together so the contact form works.
-
-## Contact form
-
-The contact form uses FormSubmit to forward project-related messages to the portfolio owner. The form must be activated with FormSubmit before messages can be delivered.
+Use the contact form on the site for project-related messages. It uses FormSubmit to forward submissions by email.
