@@ -9,12 +9,13 @@
   function clearVisibleFields() {
     form.querySelectorAll('input:not([type="hidden"]), textarea').forEach((field) => {
       field.value = '';
-      field.defaultValue = '';
-      field.removeAttribute('value');
       field.dispatchEvent(new Event('input', { bubbles: true }));
       field.dispatchEvent(new Event('change', { bubbles: true }));
     });
     form.reset();
+    form.querySelectorAll('input:not([type="hidden"]), textarea').forEach((field) => {
+      field.value = '';
+    });
   }
 
   form.addEventListener('submit', async (event) => {
@@ -57,15 +58,18 @@
         body: JSON.stringify(payload)
       });
       const result = await response.json().catch(() => ({}));
-      if (!response.ok || result.success !== true) {
+      const providerConfirmed = result.success === true || result.success === 'true';
+      const providerRejected = result.success === false || result.success === 'false';
+      const acceptedMessage = /success|sent|accept|activat/i.test(String(result.message || ''));
+      if (!response.ok || providerRejected || (!providerConfirmed && !acceptedMessage)) {
         throw new Error(result.message || 'FormSubmit did not confirm the submission. Please try again or contact me through GitHub.');
       }
 
       const providerMessage = String(result.message || '').toLowerCase();
+      clearVisibleFields();
       if (/confirm|activat/.test(providerMessage)) {
         status.textContent = 'FormSubmit is holding this message until the form is activated. Check your inbox and Spam folder for the activation email.';
       } else {
-        clearVisibleFields();
         status.textContent = 'Message submitted. Thanks for reaching out about a project—I’ll review it soon.';
       }
     } catch (error) {
