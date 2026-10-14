@@ -43,10 +43,6 @@
     .fact span { display:block; color:#918da2; font-size:10px; margin-top:5px; }
     .visual { position:relative; min-height:450px; display:grid; place-items:center; isolation:isolate; }
     .visual::before { content:''; position:absolute; width:min(35vw,440px); aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(99,52,162,.20),rgba(40,24,72,.12) 45%,transparent 72%); filter:blur(14px); }
-    .orbit-label { position:absolute; color:rgba(229,218,255,.53); font:9px 'DM Mono',monospace; letter-spacing:.2em; text-transform:uppercase; }
-    .orbit-label.top { top:8%; right:7%; }
-    .orbit-label.bottom { bottom:9%; left:7%; }
-    .coordinates { position:absolute; right:0; bottom:6%; color:rgba(194,185,211,.48); text-align:right; font:9px/1.9 'DM Mono',monospace; }
     .scroll-cue { display:inline-flex;align-items:center;gap:10px;margin-top:39px;color:#a49db4;text-decoration:none;font:9px 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase }
     .scroll-cue::before { content:'';width:1px;height:24px;background:linear-gradient(#bd9aff,transparent) }
     .projects-section { position:relative;min-height:100vh;padding:120px 0 140px;border-top:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(7,5,13,.68),rgba(5,4,10,.9)) }
@@ -115,10 +111,7 @@
           <div class="facts"><div class="fact"><strong>20 YEARS</strong><span>AND COUNTING</span></div><div class="fact"><strong>IN PROGRESS</strong><span>ALWAYS LEARNING</span></div><div class="fact"><strong>EARTH ↗</strong><span>OPEN TO THE UNIVERSE</span></div></div>
           <a class="scroll-cue" href="#projects">Scroll to featured project</a>
         </div>
-        <div class="visual" aria-hidden="true">
-          <span class="orbit-label top">Event horizon · 01</span><span class="orbit-label bottom">Curiosity in motion</span>
-          <div class="coordinates">BHAVISH B N<br>EXPLORING · LEARNING · BUILDING<br>20° N / 77° E</div>
-        </div>
+        <div class="visual" aria-hidden="true"></div>
       </section>
     </main>
   </div>
