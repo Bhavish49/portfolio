@@ -379,7 +379,10 @@
           const result = await response.json().catch(() => ({}));
           if (!response.ok || result.success === false) throw new Error(result.message || 'Your message could not be sent. Please try again.');
           form.reset();
-          status.textContent = 'Message sent. Thanks for reaching out!';
+          const providerMessage = String(result.message || '').toLowerCase();
+          status.textContent = /confirm|activat/.test(providerMessage)
+            ? 'Check your inbox for FormSubmit’s activation email. Messages will be delivered after you confirm the form.'
+            : 'Request accepted. If this is the first message, confirm FormSubmit’s activation email in your inbox to start delivery.';
         } catch (error) {
           status.textContent = error.message || 'Your message could not be sent. Please try again.';
         } finally {
