@@ -133,6 +133,8 @@
     .contact-kicker { margin:0 0 4px;color:#3fb950;font:600 10px 'DM Mono',monospace;letter-spacing:.12em }
     .contact-heading h2 { margin:0;color:#e6edf3;font-size:21px;font-weight:600;letter-spacing:-.03em }
     .contact-intro { margin:13px 0 17px;color:#9198a1;font-size:12px;line-height:1.6 }
+    .contact-guidance { margin:-7px 0 16px;padding:9px 11px;border:1px solid #3d3421;border-radius:6px;background:#1c1912;color:#c9b987;font-size:10px;line-height:1.5 }
+    .contact-guidance strong { color:#e3c878;font-weight:600 }
     #contact-form { display:grid;gap:12px }
     #contact-form label { display:grid;gap:6px;color:#c9d1d9;font-size:11px;font-weight:600 }
     #contact-form input,#contact-form textarea { width:100%;min-width:0;border:1px solid #30363d;border-radius:6px;background:#0d1117;color:#e6edf3;padding:9px 11px;font:12px Arial,Helvetica,sans-serif;outline:none;transition:border-color .15s,box-shadow .15s }
@@ -211,8 +213,12 @@
         <div class="visual" id="contact" aria-label="Contact Bhavish">
           <section class="contact-card" aria-labelledby="contact-title">
             <div class="contact-heading"><span class="contact-icon" aria-hidden="true">✉</span><div><p class="contact-kicker">OPEN TO GOOD IDEAS</p><h2 id="contact-title">Connect with me</h2></div></div>
-            <p class="contact-intro">Have a project, question, or opportunity in mind? Send me a note and tell me a little about it.</p>
-            <form id="contact-form">
+            <p class="contact-intro">Have a project idea, collaboration, or a question about something I’ve built? Send me a note and tell me a little about it.</p>
+            <p class="contact-guidance"><strong>Project related messages only, please.</strong> Include a few details so I can understand what you’re working on.</p>
+            <form id="contact-form" action="https://formsubmit.co/bhavish777bn@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="Portfolio contact message" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
               <div class="contact-row"><label>Your name<input name="name" autocomplete="name" placeholder="Jane Doe" required maxlength="100" /></label><label>Your email<input name="email" type="email" autocomplete="email" placeholder="jane@example.com" required maxlength="254" /></label></div>
               <label>Subject<input name="subject" placeholder="What would you like to talk about?" required maxlength="160" /></label>
               <label>Message<textarea name="message" rows="4" placeholder="Share a few details…" required minlength="10" maxlength="5000"></textarea></label>
@@ -351,50 +357,7 @@
       pointer.x = innerWidth * .5; pointer.y = innerHeight * .5;
       requestAnimationFrame(frame);
     })();
-    (() => {
-      const form = document.getElementById('contact-form');
-      const status = document.getElementById('contact-status');
-      const button = document.getElementById('contact-submit');
-      const endpoint = 'https://formsubmit.co/ajax/bhavish777bn@gmail.com';
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        if (!['http:', 'https:'].includes(window.location.protocol)) {
-          status.textContent = 'Open this portfolio through a website URL or a local web server before sending.';
-          return;
-        }
-        if (!form.reportValidity()) return;
-        const fields = new FormData(form);
-        const payload = {
-          name: String(fields.get('name') || '').trim(),
-          email: String(fields.get('email') || '').trim(),
-          _replyto: String(fields.get('email') || '').trim(),
-          _subject: `Portfolio message: ${String(fields.get('subject') || '').trim()}`,
-          message: String(fields.get('message') || '').trim(),
-          _honey: String(fields.get('_honey') || ''),
-          _url: window.location.href
-        };
-        button.disabled = true;
-        status.textContent = 'Sending your message…';
-        try {
-          const response = await fetch(endpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-          const result = await response.json().catch(() => ({}));
-          if (!response.ok || result.success === false) throw new Error(result.message || 'Your message could not be sent. Please try again.');
-          form.reset();
-          const providerMessage = String(result.message || '').toLowerCase();
-          status.textContent = /confirm|activat/.test(providerMessage)
-            ? 'Check your inbox for FormSubmit’s activation email. Messages will be delivered after you confirm the form.'
-            : 'FormSubmit accepted the request. Check your inbox and spam folder for the message.';
-        } catch (error) {
-          status.textContent = error.message || 'Your message could not be sent. Please try again.';
-        } finally {
-          button.disabled = false;
-        }
-      });
-    })();
   </script>
+  <script src="./contact.js?v=3" defer></script>
 </body>
 </html>
