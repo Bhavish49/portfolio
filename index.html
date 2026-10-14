@@ -139,6 +139,7 @@
     #contact-form input { height:36px }
     #contact-form textarea { min-height:86px;resize:vertical;line-height:1.55 }
     #contact-form input::placeholder,#contact-form textarea::placeholder { color:#6e7681 }
+    #contact-form .contact-trap { position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important }
     #contact-form input:focus,#contact-form textarea:focus { border-color:#2f81f7;box-shadow:0 0 0 3px rgba(47,129,247,.18) }
     .contact-row { display:grid;grid-template-columns:1fr 1fr;gap:11px }
     .contact-submit { display:flex;align-items:center;gap:11px;flex-wrap:wrap }
@@ -215,7 +216,8 @@
               <div class="contact-row"><label>Your name<input name="name" autocomplete="name" placeholder="Jane Doe" required maxlength="100" /></label><label>Your email<input name="email" type="email" autocomplete="email" placeholder="jane@example.com" required maxlength="254" /></label></div>
               <label>Subject<input name="subject" placeholder="What would you like to talk about?" required maxlength="160" /></label>
               <label>Message<textarea name="message" rows="4" placeholder="Share a few details…" required minlength="10" maxlength="5000"></textarea></label>
-              <div class="contact-submit"><button class="button primary" id="contact-submit" type="submit">Send message <span aria-hidden="true">↗</span></button><span class="contact-status" id="contact-status" role="status" aria-live="polite">Your email app will open so you can send the message.</span></div>
+              <label class="contact-trap" aria-hidden="true">Leave this field empty<input name="_honey" tabindex="-1" autocomplete="off" /></label>
+              <div class="contact-submit"><button class="button primary" id="contact-submit" type="submit">Send message <span aria-hidden="true">↗</span></button><span class="contact-status" id="contact-status" role="status" aria-live="polite">Your message will be emailed directly to Bhavish.</span></div>
             </form>
           </section>
         </div>
@@ -352,15 +354,37 @@
     (() => {
       const form = document.getElementById('contact-form');
       const status = document.getElementById('contact-status');
-      const contactAddress = 'bhavish777bn@gmail.com';
-      form.addEventListener('submit', (event) => {
+      const button = document.getElementById('contact-submit');
+      const endpoint = 'https://formsubmit.co/ajax/bhavish777bn@gmail.com';
+      form.addEventListener('submit', async (event) => {
         event.preventDefault();
         if (!form.reportValidity()) return;
         const fields = new FormData(form);
-        const subject = String(fields.get('subject') || '').trim();
-        const body = `From: ${String(fields.get('name') || '').trim()}\nReply to: ${String(fields.get('email') || '').trim()}\n\n${String(fields.get('message') || '').trim()}`;
-        status.textContent = 'Opening your email app. Press Send there to deliver the message.';
-        window.location.href = `mailto:${contactAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const payload = {
+          name: String(fields.get('name') || '').trim(),
+          email: String(fields.get('email') || '').trim(),
+          _replyto: String(fields.get('email') || '').trim(),
+          _subject: `Portfolio message: ${String(fields.get('subject') || '').trim()}`,
+          message: String(fields.get('message') || '').trim(),
+          _honey: String(fields.get('_honey') || '')
+        };
+        button.disabled = true;
+        status.textContent = 'Sending your message…';
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok || result.success === false) throw new Error(result.message || 'Your message could not be sent. Please try again.');
+          form.reset();
+          status.textContent = 'Message sent. Thanks for reaching out!';
+        } catch (error) {
+          status.textContent = error.message || 'Your message could not be sent. Please try again.';
+        } finally {
+          button.disabled = false;
+        }
       });
     })();
   </script>
