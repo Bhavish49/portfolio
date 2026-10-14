@@ -127,6 +127,23 @@
     .fact span { color:#9198a1;font-size:11px }
     .visual { min-height:405px;border:1px solid rgba(110,118,129,.35);border-radius:8px;background:radial-gradient(ellipse at center,rgba(22,27,34,.05),rgba(13,17,23,.18) 60%,rgba(13,17,23,.48));overflow:hidden }
     .visual::before { width:min(37vw,430px);background:radial-gradient(circle,rgba(88,166,255,.12),rgba(163,113,247,.08) 45%,transparent 72%) }
+    .contact-card { position:relative;z-index:1;width:min(100%,560px);padding:23px 24px;text-align:left;border:1px solid #30363d;border-radius:8px;background:rgba(13,17,23,.94);box-shadow:0 14px 44px rgba(0,0,0,.3);backdrop-filter:blur(12px) }
+    .contact-heading { display:flex;align-items:center;gap:13px }
+    .contact-icon { width:39px;height:39px;flex:none;display:grid;place-items:center;border:1px solid #3d444d;border-radius:8px;color:#79c0ff;background:#161b22;font-size:18px }
+    .contact-kicker { margin:0 0 4px;color:#3fb950;font:600 10px 'DM Mono',monospace;letter-spacing:.12em }
+    .contact-heading h2 { margin:0;color:#e6edf3;font-size:21px;font-weight:600;letter-spacing:-.03em }
+    .contact-intro { margin:13px 0 17px;color:#9198a1;font-size:12px;line-height:1.6 }
+    #contact-form { display:grid;gap:12px }
+    #contact-form label { display:grid;gap:6px;color:#c9d1d9;font-size:11px;font-weight:600 }
+    #contact-form input,#contact-form textarea { width:100%;min-width:0;border:1px solid #30363d;border-radius:6px;background:#0d1117;color:#e6edf3;padding:9px 11px;font:12px Arial,Helvetica,sans-serif;outline:none;transition:border-color .15s,box-shadow .15s }
+    #contact-form input { height:36px }
+    #contact-form textarea { min-height:86px;resize:vertical;line-height:1.55 }
+    #contact-form input::placeholder,#contact-form textarea::placeholder { color:#6e7681 }
+    #contact-form input:focus,#contact-form textarea:focus { border-color:#2f81f7;box-shadow:0 0 0 3px rgba(47,129,247,.18) }
+    .contact-row { display:grid;grid-template-columns:1fr 1fr;gap:11px }
+    .contact-submit { display:flex;align-items:center;gap:11px;flex-wrap:wrap }
+    .contact-submit .button { cursor:pointer;font-family:inherit }
+    .contact-status { color:#8b949e;font-size:10px;line-height:1.5 }
     .scroll-cue { margin-top:26px;color:#8b949e;font:12px Arial,Helvetica,sans-serif;letter-spacing:0;text-transform:none }
     .scroll-cue::before { height:19px;background:#30363d }
     .projects-section { min-height:auto;padding:42px 0 76px;border-top:0;background:transparent }
@@ -162,7 +179,7 @@
     footer { background:rgba(13,17,23,.94);border-top:1px solid var(--gh-border) }
     footer .page { color:#9198a1;font:11px Arial,Helvetica,sans-serif;letter-spacing:0;text-transform:none }
     .sound i { background:#3fb950 }
-    @media (max-width:760px) { header{gap:12px}.page{width:calc(100% - 32px)}nav{gap:0}nav a{padding:0 8px;font-size:12px}.repo-path{min-height:58px;font-size:17px}.repo-tabs{margin-bottom:10px}.hero{min-height:0;grid-template-columns:1fr;padding:26px 0 35px}.visual{position:relative;inset:auto;width:100%;min-height:300px;opacity:1;z-index:0}.hero-copy{z-index:auto}.facts{margin-top:24px}.project-card,.project-card.secondary{grid-template-columns:none}.project-aside{min-height:0;padding:12px 14px}.project-orbit{width:34px;height:34px;grid-column:auto;grid-row:auto}.project-content{padding:18px}.projects-section{padding-top:30px}.about-grid{grid-template-columns:1fr;gap:5px} }
+    @media (max-width:760px) { header{gap:12px}.page{width:calc(100% - 32px)}nav{gap:0}nav a{padding:0 8px;font-size:12px}.repo-path{min-height:58px;font-size:17px}.repo-tabs{margin-bottom:10px}.hero{min-height:0;grid-template-columns:1fr;padding:26px 0 35px}.visual{position:relative;inset:auto;width:100%;min-height:300px;opacity:1;z-index:0}.contact-card{width:min(100%,600px)}.hero-copy{z-index:auto}.facts{margin-top:24px}.project-card,.project-card.secondary{grid-template-columns:none}.project-aside{min-height:0;padding:12px 14px}.project-orbit{width:34px;height:34px;grid-column:auto;grid-row:auto}.project-content{padding:18px}.projects-section{padding-top:30px}.about-grid{grid-template-columns:1fr;gap:5px} }
     @media (max-width:480px) { header{height:auto;min-height:58px;flex-wrap:wrap;padding:10px 0}.brand{font-size:12px}.brand-mark{width:28px;height:28px}nav{order:2;width:100%;height:38px;margin:0}nav a{padding:0 10px}nav .github{margin-left:auto}nav a[href="#projects"]::after{left:8px;right:8px}.repo-path{min-height:50px}.repo-path .repo-star{font-size:11px;padding:6px 9px}.repo-tabs a{font-size:12px;padding:10px 9px}.actions{flex-wrap:wrap}.facts{display:grid;grid-template-columns:1fr 1fr}.fact:nth-child(2){border-right:0}.fact:last-child{grid-column:1/-1;border-top:1px solid var(--gh-border)}.project-language{font-size:9px}.project-index{font-size:11px}.project-aside{gap:8px}footer .page{font-size:9px} }
   </style>
 </head>
@@ -173,7 +190,7 @@
     <header>
       <a class="brand" href="#home" aria-label="Bhavish B N home"><span class="brand-mark">B</span><span>BHAVISH B N</span></a>
       <nav aria-label="Main navigation">
-        <a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#projects">PROJECTS</a>
+        <a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#projects">PROJECTS</a><a href="#contact">CONTACT</a>
         <a class="github" href="https://github.com/Bhavish49" target="_blank" rel="noreferrer">GITHUB ↗</a>
       </nav>
     </header>
@@ -190,7 +207,18 @@
           <div class="facts"><div class="fact"><strong>20 YEARS</strong><span>AND COUNTING</span></div><div class="fact"><strong>IN PROGRESS</strong><span>ALWAYS LEARNING</span></div><div class="fact"><strong>EARTH ↗</strong><span>OPEN TO THE UNIVERSE</span></div></div>
           <a class="scroll-cue" href="#projects">Scroll to featured project</a>
         </div>
-        <div class="visual" aria-hidden="true"></div>
+        <div class="visual" id="contact" aria-label="Contact Bhavish">
+          <section class="contact-card" aria-labelledby="contact-title">
+            <div class="contact-heading"><span class="contact-icon" aria-hidden="true">✉</span><div><p class="contact-kicker">OPEN TO GOOD IDEAS</p><h2 id="contact-title">Connect with me</h2></div></div>
+            <p class="contact-intro">Have a project, question, or opportunity in mind? Send me a note and tell me a little about it.</p>
+            <form id="contact-form">
+              <div class="contact-row"><label>Your name<input name="name" autocomplete="name" placeholder="Jane Doe" required maxlength="100" /></label><label>Your email<input name="email" type="email" autocomplete="email" placeholder="jane@example.com" required maxlength="254" /></label></div>
+              <label>Subject<input name="subject" placeholder="What would you like to talk about?" required maxlength="160" /></label>
+              <label>Message<textarea name="message" rows="4" placeholder="Share a few details…" required minlength="10" maxlength="5000"></textarea></label>
+              <div class="contact-submit"><button class="button primary" id="contact-submit" type="submit">Send message <span aria-hidden="true">↗</span></button><span class="contact-status" id="contact-status" role="status" aria-live="polite">Your email app will open so you can send the message.</span></div>
+            </form>
+          </section>
+        </div>
       </section>
     </main>
   </div>
@@ -320,6 +348,20 @@
       }
       pointer.x = innerWidth * .5; pointer.y = innerHeight * .5;
       requestAnimationFrame(frame);
+    })();
+    (() => {
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('contact-status');
+      const contactAddress = 'bhavish777bn@gmail.com';
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        const fields = new FormData(form);
+        const subject = String(fields.get('subject') || '').trim();
+        const body = `From: ${String(fields.get('name') || '').trim()}\nReply to: ${String(fields.get('email') || '').trim()}\n\n${String(fields.get('message') || '').trim()}`;
+        status.textContent = 'Opening your email app. Press Send there to deliver the message.';
+        window.location.href = `mailto:${contactAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
     })();
   </script>
 </body>
