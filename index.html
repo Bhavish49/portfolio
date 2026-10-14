@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#05040a" />
+  <meta name="theme-color" content="#0d1117" />
   <meta name="description" content="Bhavish B N — exploring, learning, building across the universe of code." />
   <title>Bhavish B N — Into the unknown</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -87,6 +87,83 @@
     @media (max-width:760px) { .page{width:calc(100% - 40px)} header{height:72px} nav{gap:17px} nav a{font-size:11px} nav a:nth-child(2){display:none} .hero{grid-template-columns:1fr;gap:0;padding:75px 0 64px} h1{font-size:clamp(54px,13vw,82px)} .visual{position:absolute;inset:90px -20px auto auto;width:64%;min-height:430px;opacity:.76;z-index:-1} .visual::before{width:100%}.orbit-label,.coordinates{display:none}.hero-copy{position:relative;z-index:1}.description{max-width:390px}.facts{margin-top:38px}.project-card,.project-card.secondary{grid-template-columns:1fr}.project-aside{min-height:190px;padding:22px;display:grid;grid-template-columns:1fr auto;align-items:center;border-right:0;border-bottom:1px solid rgba(255,255,255,.1)}.project-orbit{grid-column:2;grid-row:1/3;width:96px;height:96px}.project-language{align-self:end}.project-content{padding:28px 25px}.projects-section{padding-top:88px}.about-grid{grid-template-columns:1fr;gap:12px} footer .page{font-size:8px} }
     @media (max-width:420px) { .page{width:calc(100% - 32px)} nav{gap:12px} nav a:first-child{display:none} .actions{flex-wrap:wrap}.facts{gap:16px} .fact{padding-left:9px} }
     @media (prefers-reduced-motion:reduce) { *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important} }
+    /* GitHub-inspired repository UI */
+    :root { color-scheme:dark;--ink:#e6edf3;--muted:#9198a1;--violet:#a371f7;--cyan:#79c0ff;--gh-bg:#0d1117;--gh-panel:#161b22;--gh-border:#30363d;--gh-link:#4493f8;--gh-green:#3fb950 }
+    html,body { background:var(--gh-bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif }
+    #universe { opacity:.42;background:radial-gradient(ellipse at 50% 52%,#161b22 0%,#0d1117 52%,#0d1117 100%) }
+    .veil { background:linear-gradient(180deg,rgba(13,17,23,.25),rgba(13,17,23,.78) 72%,#0d1117) }
+    .page { width:min(1280px,calc(100% - 64px)) }
+    header { height:64px;justify-content:flex-start;gap:30px;border-bottom:1px solid var(--gh-border) }
+    .brand { gap:10px;font-size:14px;font-weight:600;letter-spacing:0 }
+    .brand-mark { width:32px;height:32px;background:#f0f6fc;color:#0d1117;font-size:15px;font-weight:800 }
+    nav { align-self:stretch;gap:4px;margin-left:auto }
+    nav a { display:flex;align-items:center;padding:0 12px;color:#c9d1d9;font-size:13px;position:relative }
+    nav a:hover { color:#fff }
+    nav a[href="#projects"]::after { content:"";position:absolute;left:12px;right:12px;bottom:0;height:2px;border-radius:2px;background:#f78166 }
+    nav .github { border:1px solid var(--gh-border);padding:7px 12px;border-radius:6px;margin:auto 0 auto 8px;height:32px;color:var(--ink);background:rgba(22,27,34,.8) }
+    .repo-path { min-height:70px;display:flex;align-items:center;gap:8px;color:var(--gh-link);font-size:20px }
+    .repo-path strong { font-weight:600 }
+    .public-pill { border:1px solid #3d444d;border-radius:20px;color:#9198a1;font-size:11px;padding:2px 8px;margin-left:4px }
+    .repo-path .repo-star { margin-left:auto;color:#c9d1d9;background:#212830;border:1px solid var(--gh-border);border-radius:6px;padding:7px 12px;text-decoration:none;font-size:12px }
+    .repo-tabs { display:flex;gap:7px;overflow-x:auto;border-bottom:1px solid var(--gh-border);margin-bottom:24px }
+    .repo-tabs a { white-space:nowrap;text-decoration:none;color:#c9d1d9;padding:11px 13px 13px;font-size:13px;border-bottom:2px solid transparent }
+    .repo-tabs a.active { border-color:#f78166;font-weight:600 }
+    main { min-height:auto;display:block }
+    .hero { min-height:510px;padding:42px 0 55px;grid-template-columns:1.05fr .95fr;gap:28px }
+    .eyebrow { color:#a5d6ff;font:12px Arial,Helvetica,sans-serif;letter-spacing:0;text-transform:none }
+    .eyebrow::before { content:none }
+    h1 { margin:16px 0 8px;font-size:clamp(40px,5.4vw,68px);font-weight:600;line-height:1.05;letter-spacing:-.045em }
+    h1 span { color:#79c0ff;background:none }
+    .role { color:#e6edf3;font-size:18px;margin-top:17px }
+    .description { color:#b1bac4;font-size:15px;line-height:1.7;margin-top:14px }
+    .button { min-height:36px;padding:0 14px;border:1px solid rgba(240,246,252,.1);border-radius:6px;color:var(--ink);font-size:13px;font-weight:500;background:rgba(33,40,48,.94);box-shadow:0 1px 0 rgba(31,35,40,.15);transition:background .15s,border-color .15s }
+    .button:hover { transform:none;background:#30363d;border-color:#8b949e }
+    .button.primary { color:#fff;border-color:rgba(240,246,252,.1);background:#238636;font-weight:600 }
+    .button.primary:hover { background:#2ea043 }
+    .facts { gap:0;margin-top:31px;border:1px solid var(--gh-border);border-radius:6px;background:rgba(22,27,34,.86);max-width:560px }
+    .fact { flex:1;border:0;border-right:1px solid var(--gh-border);padding:13px 15px }
+    .fact:last-child { border-right:0 }
+    .fact strong { color:#e6edf3;font:600 12px Arial,Helvetica,sans-serif }
+    .fact span { color:#9198a1;font-size:11px }
+    .visual { min-height:405px;border:1px solid rgba(110,118,129,.35);border-radius:8px;background:radial-gradient(ellipse at center,rgba(22,27,34,.05),rgba(13,17,23,.18) 60%,rgba(13,17,23,.48));overflow:hidden }
+    .visual::before { width:min(37vw,430px);background:radial-gradient(circle,rgba(88,166,255,.12),rgba(163,113,247,.08) 45%,transparent 72%) }
+    .scroll-cue { margin-top:26px;color:#8b949e;font:12px Arial,Helvetica,sans-serif;letter-spacing:0;text-transform:none }
+    .scroll-cue::before { height:19px;background:#30363d }
+    .projects-section { min-height:auto;padding:42px 0 76px;border-top:0;background:transparent }
+    .section-heading { max-width:780px;margin-bottom:25px }
+    .section-heading h2 { margin:13px 0;font-size:clamp(30px,4vw,42px);line-height:1.12;letter-spacing:-.04em }
+    .section-heading p { color:#9198a1;font-size:14px;line-height:1.65 }
+    .project-card,.project-card.secondary { display:block;margin-top:18px;border:1px solid var(--gh-border);border-radius:6px;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);box-shadow:none;overflow:hidden }
+    .project-aside { min-height:0;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:14px;padding:13px 18px;background:rgba(22,27,34,.94);border:0;border-bottom:1px solid var(--gh-border) }
+    .project-index { color:#9198a1;font:12px Arial,Helvetica,sans-serif;letter-spacing:0;text-transform:none }
+    .project-orbit { width:38px;height:38px;order:-1;flex:none;border-color:#3d444d;box-shadow:none }
+    .project-orbit::before { inset:7px;border-color:#3d444d }
+    .project-orbit::after { inset:13px;border-color:#3d444d }
+    .project-orbit span { color:#79c0ff;font-size:17px;text-shadow:none }
+    .project-language { margin-left:auto;color:#9198a1;font:11px 'DM Mono',monospace;letter-spacing:0 }
+    .project-content { padding:20px 24px 23px }
+    .project-content .eyebrow { color:#9198a1;font-size:12px }
+    .project-content h3 { margin:7px 0 12px;color:var(--gh-link);font-size:21px;font-weight:600;letter-spacing:-.02em }
+    .project-tagline { color:#e6edf3;font-size:15px;font-weight:600;line-height:1.6 }
+    .project-description { color:#b1bac4;font-size:14px;line-height:1.7 }
+    .project-content h4 { margin:19px 0 7px;color:#e6edf3;font-size:14px;text-transform:none;letter-spacing:0 }
+    .project-readme,.project-content .project-readme { margin-top:13px;padding-top:14px;border-top:1px solid var(--gh-border);color:#b1bac4;font-size:13px;line-height:1.75;white-space:normal }
+    .project-content .project-readme li { margin:4px 0 }
+    .project-meta { gap:12px;color:#9198a1;font:12px Arial,Helvetica,sans-serif;text-transform:none;letter-spacing:0 }
+    .project-meta span:first-child::before { content:"";display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:50%;background:#3572a5;vertical-align:-1px }
+    .project-links { margin-top:18px;flex-wrap:wrap }
+    .project-links .button { min-height:34px }
+    .about-note { margin-top:18px;padding:14px 16px;border:1px solid #3d444d;border-left:3px solid #d29922;border-radius:6px;background:rgba(22,27,34,.85);color:#b1bac4;font-size:12px;line-height:1.75 }
+    .more-projects { margin-top:16px;padding:15px 18px;border:1px solid var(--gh-border);border-radius:6px;background:rgba(22,27,34,.85);color:#b1bac4;font-size:13px }
+    .more-projects a { color:var(--gh-link) }
+    .about-section { padding:48px 0 110px;border-top:1px solid var(--gh-border);background:rgba(13,17,23,.88) }
+    .about-grid h2 { margin:13px 0;font-size:34px;font-weight:600;letter-spacing:-.04em }
+    .about-grid p { color:#b1bac4;font-size:14px;line-height:1.8 }
+    footer { background:rgba(13,17,23,.94);border-top:1px solid var(--gh-border) }
+    footer .page { color:#9198a1;font:11px Arial,Helvetica,sans-serif;letter-spacing:0;text-transform:none }
+    .sound i { background:#3fb950 }
+    @media (max-width:760px) { header{gap:12px}.page{width:calc(100% - 32px)}nav{gap:0}nav a{padding:0 8px;font-size:12px}.repo-path{min-height:58px;font-size:17px}.repo-tabs{margin-bottom:10px}.hero{min-height:0;grid-template-columns:1fr;padding:26px 0 35px}.visual{position:relative;inset:auto;width:100%;min-height:300px;opacity:1;z-index:0}.hero-copy{z-index:auto}.facts{margin-top:24px}.project-card,.project-card.secondary{grid-template-columns:none}.project-aside{min-height:0;padding:12px 14px}.project-orbit{width:34px;height:34px;grid-column:auto;grid-row:auto}.project-content{padding:18px}.projects-section{padding-top:30px}.about-grid{grid-template-columns:1fr;gap:5px} }
+    @media (max-width:480px) { header{height:auto;min-height:58px;flex-wrap:wrap;padding:10px 0}.brand{font-size:12px}.brand-mark{width:28px;height:28px}nav{order:2;width:100%;height:38px;margin:0}nav a{padding:0 10px}nav .github{margin-left:auto}nav a[href="#projects"]::after{left:8px;right:8px}.repo-path{min-height:50px}.repo-path .repo-star{font-size:11px;padding:6px 9px}.repo-tabs a{font-size:12px;padding:10px 9px}.actions{flex-wrap:wrap}.facts{display:grid;grid-template-columns:1fr 1fr}.fact:nth-child(2){border-right:0}.fact:last-child{grid-column:1/-1;border-top:1px solid var(--gh-border)}.project-language{font-size:9px}.project-index{font-size:11px}.project-aside{gap:8px}footer .page{font-size:9px} }
   </style>
 </head>
 <body>
@@ -100,6 +177,8 @@
         <a class="github" href="https://github.com/Bhavish49" target="_blank" rel="noreferrer">GITHUB ↗</a>
       </nav>
     </header>
+    <div class="repo-path"><span>Bhavish49</span><span>/</span><strong>portfolio</strong><span class="public-pill">Public</span><a class="repo-star" href="https://github.com/Bhavish49/portfolio" target="_blank" rel="noreferrer">☆ Star</a></div>
+    <div class="repo-tabs" role="navigation" aria-label="Repository sections"><a class="active" href="#home">◉ Overview</a><a href="https://github.com/Bhavish49?tab=repositories" target="_blank" rel="noreferrer">▤ Repositories</a><a href="#projects">◇ Projects</a><a href="#about">◎ About</a></div>
     <main id="home">
       <section class="hero" aria-labelledby="headline">
         <div class="hero-copy" id="about">
