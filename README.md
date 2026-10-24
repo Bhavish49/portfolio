@@ -1,6 +1,6 @@
 # Bhavish B N
 
-A personal site to explore my projects, learning journey, and ways to get in touch.
+A professional profile featuring selected software projects, technical skills, and contact information.
 
 ## Visit
 
@@ -8,4 +8,4 @@ A personal site to explore my projects, learning journey, and ways to get in tou
 
 ## Contact
 
-Use the contact form on the site for project-related messages. It uses FormSubmit to forward submissions by email.
+Use the contact form for project discussions, collaboration requests, or technical questions. FormSubmit forwards submissions by email.
