@@ -223,9 +223,11 @@
     .fact span { color:#a7a0b0;font-size:10px; }
     .scroll-cue { color:#aba2b2; }
     .social-rail { position:fixed;z-index:5;left:0;top:88px;bottom:0;width:var(--rail-width);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;border-right:1px solid var(--line);background:rgba(7,7,12,.54);backdrop-filter:blur(10px); }
-    .social-rail a { width:38px;height:38px;display:grid;place-items:center;border:1px solid transparent;color:#d8d0df;text-decoration:none;transition:color .18s,border-color .18s,background .18s; }
+    .social-rail a,.social-rail .social-icon { width:38px;height:38px;display:grid;place-items:center;border:1px solid transparent;color:#d8d0df;text-decoration:none;transition:color .18s,border-color .18s,background .18s; }
     .social-rail a:hover { color:#e29cff;border-color:rgba(186,78,223,.48);background:rgba(163,49,219,.1); }
-    .social-rail svg { width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round; }
+    .social-rail svg { width:19px;height:19px;fill:currentColor;stroke:none; }
+    .social-rail .icon-instagram { fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round; }
+    .social-rail .icon-instagram .camera-dot { fill:currentColor;stroke:none; }
     nav a:focus-visible,.social-rail a:focus-visible,.button:focus-visible { outline:2px solid #d58cf0;outline-offset:4px; }
     .projects-section { min-height:0;padding:110px 0 105px;border-top:1px solid var(--line);background:linear-gradient(180deg,rgba(10,8,14,.92),rgba(7,7,12,.98)); }
     .section-heading { max-width:760px;margin:0 auto 35px;text-align:center; }
@@ -338,9 +340,10 @@
       </section>
     </main>
     <aside class="social-rail" aria-label="Quick links">
-      <a href="https://github.com/Bhavish49" target="_blank" rel="noreferrer" aria-label="GitHub profile" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 19.5c-4.2 1.3-4.2-2.1-5.9-2.5m11.8 5v-3.2a2.8 2.8 0 0 0-.8-2.2c2.7-.3 5.5-1.3 5.5-6a4.7 4.7 0 0 0-1.3-3.3 4.4 4.4 0 0 0-.1-3.3s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C5.7 3.7 4.7 4 4.7 4a4.4 4.4 0 0 0-.1 3.3 4.7 4.7 0 0 0-1.3 3.3c0 4.7 2.8 5.7 5.5 6a2.8 2.8 0 0 0-.8 2.2V22"/></svg></a>
-      <a href="#projects" aria-label="Projects" title="Projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4m8-8 4 4-4 4m-2-10-4 12"/></svg></a>
-      <a href="#contact" aria-label="Contact" title="Contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 6 8-6"/></svg></a>
+      <a href="https://github.com/Bhavish49" target="_blank" rel="noreferrer" aria-label="GitHub profile" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.07c-3.1.68-3.75-1.31-3.75-1.31-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 .1.26 1.71 2.63 1.21.1-.72.39-1.21.7-1.49-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.06 1.14a10.6 10.6 0 0 1 5.57 0c2.12-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.61 5.23-5.1 5.51.4.34.75 1.02.75 2.06v3.05c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg></a>
+      <span class="social-icon" role="img" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.21 0 22.23 0Z"/></svg></span>
+      <span class="social-icon" role="img" aria-label="X" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2h3.7l-8.1 9.3L24 22h-7.4l-5.8-7.6L4.1 22H.4l8.7-10L0 2h7.6l5.2 6.9L18.9 2Zm-1.3 18h2.1L6.5 3.9H4.2L17.6 20Z"/></svg></span>
+      <span class="social-icon" role="img" aria-label="Instagram" title="Instagram"><svg class="icon-instagram" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle class="camera-dot" cx="17.5" cy="6.7" r="1.1"/></svg></span>
     </aside>
   </div>
   <section class="projects-section" id="projects" aria-labelledby="projects-title">
